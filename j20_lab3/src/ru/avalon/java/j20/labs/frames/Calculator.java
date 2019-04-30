@@ -37,7 +37,12 @@ public class Calculator extends AbstractFrame {
 
     private Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 
-    private StringBuilder buffer = new StringBuilder(); // хранит вводимые цифры
+    private StringBuilder screenData = new StringBuilder(); // хранит вводимые цифры
+
+    private float operand1;
+    private String operation;
+    private float operand2;
+    private double result;
 
     @Override
     protected void onCreate() {
@@ -62,8 +67,11 @@ public class Calculator extends AbstractFrame {
         numSeven.addActionListener(this::onNumPressed);
         numEight.addActionListener(this::onNumPressed);
         numNine.addActionListener(this::onNumPressed);
+
         numPoint.addActionListener(this::onPointPressed);
+
         numCE.addActionListener(this::onCEPressed);
+
         numPlus.addActionListener(this::onPlusPressed);
         numMinus.addActionListener(this::onMinusPressed);
         numMultiply.addActionListener(this::onMultiplyPressed);
@@ -132,17 +140,15 @@ public class Calculator extends AbstractFrame {
     }
 
     private void updateScreen() {
-        screenLabel.setText(buffer.toString());
+        screenLabel.setText(screenData.toString());
     }
 
     private void onNumPressed(ActionEvent e) {
         int num = Integer.valueOf(e.getActionCommand());
-        buffer.append(String.valueOf(num));
+        screenData.append(String.valueOf(num));
         updateScreen();
     }
 
-    public void onCEPressed(ActionEvent e) {
-        buffer = null;
+    private void onCEPressed(ActionEvent e) {
     }
-
 }
