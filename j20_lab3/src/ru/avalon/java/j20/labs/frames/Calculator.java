@@ -131,14 +131,14 @@ public class Calculator extends AbstractFrame {
         clipboard.setContents(selection, selection);
     }
 
-    private void updateScreen(int number) {
+    private void updateScreen() {
         screenLabel.setText(buffer.toString());
     }
 
     private void onNumPressed(ActionEvent e) {
         int num = Integer.valueOf(e.getActionCommand());
         buffer.append(String.valueOf(num));
-        updateScreen(num);
+        updateScreen();
     }
 
     public void onCEPressed(ActionEvent e) {
